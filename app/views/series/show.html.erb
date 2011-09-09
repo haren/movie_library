@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+<table>
+	<tr>
+		<td  valign="top">
+			<p>
+				<b>Title:</b>
+				<%= @series.title %>
+			</p>
+
+			<p>
+				<b>No. of Episodes:</b>
+				<%= @series.number_of_episodes %>
+			</p>
+
+			<p>
+				<b> Episodes: </b>
+			</p>
+
+			<table>
+				<tr>
+					<th>Title</th>
+					<th>Number</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+
+			<% @series.episodes.sort_by(&:number).each do |episode| %>
+				<tr>
+					<td><%= episode.title %></td>
+					<td><%= episode.number %></td>
+					<td><%= link_to 'Show', [@series, episode] %></td>
+					<td><%= link_to 'Edit', [:edit, @series, episode] %></td>
+					<td><%= link_to 'Destroy', [@series, episode], confirm: 'Are you sure?', method: :delete %></td>
+				</tr>
+			<% end %>
+			</table>
+		</td>
+		<td>
+			<%= image_tag @series.pic.url, :alt => "Picture missing" %>
+		</td>
+
+</table>
+<p>
+
+
+</p>
+<%= link_to 'Edit', edit_series_path(@series) %> |
+<%= link_to 'Back', series_index_path %>

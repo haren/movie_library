@@ -1,0 +1,32 @@
+<h1>Listing actors</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+		<th>Acted in</th>
+		<th>Picture</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @actors.sort_by(&:name).each do |actor| %>
+  <tr align="center" valign="middle">
+    <td><%= actor.name %></td>
+    <td><%= actor.age %></td>
+		<td><% actor.movies.all.each do |movie| %>
+					<%= link_to movie.title, movie %><br />
+				<% end %></td>
+		<td><%= image_tag actor.pic.url(:thumb), :mouseover => actor.pic.url %> 
+    <td><%= link_to 'Show', actor %></td>
+    <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
+    <td><%= link_to 'Destroy', actor, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Actor', new_actor_path %>
+<%= link_to 'Home', root_path %>

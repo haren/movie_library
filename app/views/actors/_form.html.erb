@@ -1,0 +1,46 @@
+<%= form_for@actor, :html => { :multipart => true } do |f| %>
+  <% if @actor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@actor.errors.count, "error") %> prohibited this actor from being saved:</h2>
+
+      <ul>
+      <% @actor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age %>
+  </div>
+  <div class="field">
+    <%= f.label :average_salary %><br />
+    <%= f.text_field :average_salary %>
+  </div>
+	<p>	
+		<b> Picture </b><br />
+		<%= f.file_field :pic %>
+	</p>
+
+	<div class="field">
+		<br />
+		<%= f.label "Acted in:" %>
+    <% Movie.all.each do |movie| %>
+			<br />
+      <%= check_box_tag "actor[movie_ids][]", movie.id, @actor.movie_ids.include?(movie.id)  %>
+      <%= movie.title %>
+    <% end %>
+	<br />
+	</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+
+<% end %>

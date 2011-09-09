@@ -1,0 +1,25 @@
+<h1>Listing role_in_an_episodes</h1>
+
+<table>
+  <tr>
+    <th>Actor</th>
+    <th>Episode</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @role_in_an_episodes.each do |role_in_an_episode| %>
+  <tr>
+    <td><%= role_in_an_episode.actor_id %></td>
+    <td><%= role_in_an_episode.episode_id %></td>
+    <td><%= link_to 'Show', role_in_an_episode %></td>
+    <td><%= link_to 'Edit', edit_role_in_an_episode_path(role_in_an_episode) %></td>
+    <td><%= link_to 'Destroy', role_in_an_episode, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Role in an episode', new_role_in_an_episode_path %>

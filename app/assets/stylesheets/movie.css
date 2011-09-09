@@ -1,0 +1,18 @@
+body {
+	background-color: #ffffff;
+	font-family:Verdana,Helvetica,sans-serif;
+	font-size: 14px;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+.list_line_even {
+  background:   #FFFFFF;
+}
+
+.list_line_odd {
+  background:   #fed7de;
+}
+

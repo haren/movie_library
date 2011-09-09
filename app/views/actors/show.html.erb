@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+<table>
+	<tr>
+		<td valign="top">
+			<p>
+				<b>Name:</b>
+				<%= @actor.name %>
+			</p>
+
+			<p>
+				<b>Age:</b>
+				<%= @actor.age %>
+			</p>
+
+			<p>
+				<b>Average salary:</b>
+				<%= @actor.average_salary %>
+			</p>
+
+			<p>
+			<b>Movies:</b>
+			</p>
+
+			<table>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+
+			<% @actor.movies.all.each do |movie| %>
+				<tr>
+					<td><%= movie.title %></td>
+					<td><%= link_to 'Show', movie %></td>
+					<td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+					<td><%= link_to 'Destroy', movie, confirm: 'Are you sure?', method: :delete %></td>
+				</tr>
+			<% end %>
+			</table>
+		</td>
+		<td>
+			<%= image_tag @actor.pic.url%><br />
+		</td>
+</tr>
+</table>
+
+<%= link_to 'Edit', edit_actor_path(@actor) %> |
+<%= link_to 'Back', actors_path %>

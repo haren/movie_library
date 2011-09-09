@@ -1,0 +1,27 @@
+<h1>Listing episodes</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Number</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @episodes.sort_by(&:number).each do |episode| %>
+  <tr>
+    <td><%= episode.title %></td>
+    <td><%= episode.number %></td>
+    <td><%= link_to 'Show', [@series, episode] %></td>
+    <td><%= link_to 'Edit', [:edit, @series, episode] %></td>
+    <td><%= link_to 'Destroy', [@series, episode], confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Episode', [:new, @series, :episode] %>
+<%= link_to 'Series list', series_index_path %>
+<%= link_to 'Home', root_path %>

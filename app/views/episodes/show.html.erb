@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @episode.title %>
+</p>
+
+<p>
+  <b>Number:</b>
+  <%= @episode.number %>
+</p>
+
+
+<%= link_to 'Edit', [:edit, @series, @episode] %>
+<%= link_to 'Back', [@series, :episodes] %>

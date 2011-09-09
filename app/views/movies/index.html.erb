@@ -1,0 +1,35 @@
+<h1>Listing movies</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Rating</th>
+    <th>No. of votes</th>
+		<th>Actors</th>
+		<th>Poster</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @movies.sort_by(&:rating).reverse.each do |movie| %>
+  <tr align="center" valign="middle" class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <td><%= movie.title %></td>
+    <td><%= movie.rating %></td>
+    <td><%= movie.number_of_votes %></td>
+		<td><% movie.actors.all.each do |actor| %>
+				<%= link_to actor.name, actor %><br />
+				<% end %></td>
+		<td><%= image_tag movie.pic.url(:thumb), :alt => "No poster", :mouseover => movie.pic.url %></td>
+    <td><%= link_to 'Show', movie %></td>
+    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
+    <td><%= link_to 'Destroy', movie, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Rate', :controller => "movies", :action => "rate", :id => movie %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Movie', new_movie_path %>
+<%= link_to 'Home', root_path %>

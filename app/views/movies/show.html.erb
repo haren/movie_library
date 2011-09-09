@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+<table>
+	<tr>
+		<td valign="top">
+			<p>
+				<b>Title:</b>
+				<%= @movie.title %>
+			</p>
+
+			<p>
+				<b>Rating:</b>
+				<%= @movie.rating %>
+			</p>
+
+			<p>
+				<b>Actors:</b>
+			</p>
+
+			<table>
+				<tr>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+
+			<% @movie.actors.all.each do |actor| %>
+				<tr>
+					<td><%= actor.name %></td>
+					<td><%= link_to 'Show', actor %></td>
+					<td><%= link_to 'Edit', edit_actor_path(actor) %></td>
+					<td><%= link_to 'Destroy', actor, confirm: 'Are you sure?', method: :delete %></td>
+				</tr>
+			<% end %>
+			</table>
+		</td>
+		<td>
+			<%= image_tag @movie.pic.url %>
+		</td>
+	</tr>
+</table>
+<br />
+
+<%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Back', movies_path %>

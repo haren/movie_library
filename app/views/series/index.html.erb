@@ -1,0 +1,30 @@
+<h1>Listing series</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>No. of Episodes</th>
+		<th>Poster</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @series.each do |series| %>
+  <tr align="center" valign="middle">
+    <td><%= series.title %></td>
+    <td><%= series.number_of_episodes %></td>
+		<td><%= image_tag series.pic.url(:thumb), :alt => "No poster", :mouseover => series.pic.url %></td>
+    <td><%= link_to 'Show', series %></td>
+    <td><%= link_to 'Edit', edit_series_path(series) %></td>
+    <td><%= link_to 'Destroy', series, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show episodes', [series, :episodes] %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Series', new_series_path %>
+<%= link_to 'Home', root_path %>

@@ -1,0 +1,7 @@
+<h2> <%= @movie.title %> </h2>
+<p> <%= "Current rating: " %>
+    <%= @movie.rating %> </p>
+
+<%= render 'form2' %>
+
+<%= link_to 'Back', movies_path %>
