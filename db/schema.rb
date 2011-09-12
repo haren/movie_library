@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110909143954) do
+ActiveRecord::Schema.define(:version => 20110912134257) do
 
   create_table "actors", :force => true do |t|
     t.string   "name"
@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(:version => 20110909143954) do
     t.datetime "pic_updated_at"
   end
 
+  create_table "carts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "episodes", :force => true do |t|
     t.string   "title"
     t.integer  "number"
@@ -38,6 +43,13 @@ ActiveRecord::Schema.define(:version => 20110909143954) do
     t.datetime "updated_at"
     t.integer  "series_id"
     t.integer  "rating"
+  end
+
+  create_table "line_item_movies", :force => true do |t|
+    t.integer  "movie_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "movies", :force => true do |t|
@@ -50,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20110909143954) do
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
     t.float    "rating",           :default => 0.0
+    t.float    "price"
   end
 
   create_table "role_in_a_movies", :force => true do |t|

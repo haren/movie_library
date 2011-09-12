@@ -1,0 +1,25 @@
+<h1>Listing line_item_movies</h1>
+
+<table>
+  <tr>
+    <th>Movie</th>
+    <th>Cart</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @line_item_movies.each do |line_item_movie| %>
+  <tr>
+    <td><%= line_item_movie.movie_id %></td>
+    <td><%= line_item_movie.cart_id %></td>
+    <td><%= link_to 'Show', line_item_movie %></td>
+    <td><%= link_to 'Edit', edit_line_item_movie_path(line_item_movie) %></td>
+    <td><%= link_to 'Destroy', line_item_movie, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Line item movie', new_line_item_movie_path %>

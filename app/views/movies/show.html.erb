@@ -9,7 +9,12 @@
 
 			<p>
 				<b>Rating:</b>
-				<%= @movie.rating %>
+				<%= @movie.display_rating %>
+			</p>
+
+			<p>
+				<b>Price:</b>
+				<%= number_to_currency(@movie.price) %>
 			</p>
 
 			<p>

@@ -1,4 +1,8 @@
 MovieLibrary::Application.routes.draw do
+  resources :line_item_movies
+
+  resources :carts
+
   resources :role_in_an_episodes
 
   resources :role_in_a_movies
