@@ -1,8 +1,0 @@
-<h2>Your Pragmatic Cart</h2>
-<ul>
-	<% @cart.line_item_movies.each do |item| %>	
-		<li><%= item.movie.title %></li>
-	<% end %>
-</ul>
-
-<%= link_to 'Home', root_path %>
