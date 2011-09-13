@@ -33,7 +33,6 @@
 		<%= f.label "Acted in:" %>
     <% Movie.all.each do |movie| %>
 			<br />
-			<%= hidden_field_tag "actor[movie_ids][]" %>
       <%= check_box_tag "actor[movie_ids][]", movie.id, @actor.movie_ids.include?(movie.id)  %>
       <%= movie.title %>
     <% end %>
