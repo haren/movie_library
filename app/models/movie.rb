@@ -20,4 +20,7 @@ class Movie < ActiveRecord::Base
 		Movie.increment_counter(:number_of_votes, self.id) 
 	end
 
+	def display_rating
+		tmp_rate = sprintf("%3.2f", self.rating)
+	end
 end
