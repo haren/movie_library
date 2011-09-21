@@ -1,15 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MovieLibrary</title>
-  <%= stylesheet_link_tag "application" %> 
-<!-- CHANGE ABOVE TO "MOVIE" TO EXPERIMENT -->
+  <title>The Ultimate Movie Library</title>
+  <%= stylesheet_link_tag "movie" %> 
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
+<body id="everything">
+	<div id="columns">
+		<div id="top">
+			The Ultimate Movie Library
+		</div>
+		<div id="menu">
+			<%= link_to_unless_current 'Movies', movies_path %>
+			<%= link_to_unless_current 'Series', series_index_path %>
+			<%= link_to_unless_current 'Actors', actors_path %>
+			<%= link_to_unless_current 'Home', root_path %><br />
+		</div>
+	</div>
+		<div id="main">
+			<%= yield %>
+		</div>
+	</div>
 
 </body>
 </html>

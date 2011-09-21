@@ -9,7 +9,7 @@
 
 			<p>
 				<b>Rating:</b>
-				<%= @movie.rating %>
+				<%= @movie.display_rating %>
 			</p>
 
 			<p>
@@ -42,4 +42,4 @@
 <br />
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+<%= link_to 'Movies', movies_path %>

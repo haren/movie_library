@@ -16,3 +16,51 @@ table {
   background:   #fed7de;
 }
 
+a {
+  color: #000;
+  &:visited {
+    color: #666; 
+		font-weight: bold;}
+  &:hover {
+    color: #fff;
+    background-color: #000; } }
+
+
+#everything {
+	font-size: 0.75em;
+}
+
+#top {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
+	text-align: right;
+	font-style: italic;
+	background-color: black;
+	color: white;
+	margin-left: 11em;
+}
+
+#menu {
+	font-size: 1.25em;
+	width: 15em;
+	float: left;
+	background-color: #a0b4ef;
+	padding: 15px;
+}
+
+#main {
+	padding-top: 10px;
+	margin-left: 25em;
+	padding-left: 2em;
+	padding-bottom: 2em;
+	background-color: white;
+	min-height: 550px;
+}
+
+#main h1 {
+	margin-left: 10em;
+}
+
+
+

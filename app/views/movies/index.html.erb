@@ -8,8 +8,6 @@
 		<th>Actors</th>
 		<th>Poster</th>
     <th></th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @movies.sort_by(&:rating).reverse.each do |movie| %>
@@ -21,10 +19,10 @@
 				<%= link_to actor.name, actor %><br />
 				<% end %></td>
 		<td><%= image_tag movie.pic.url(:thumb), :alt => "No poster", :mouseover => movie.pic.url %></td>
-    <td><%= link_to 'Show', movie %></td>
-    <td><%= link_to 'Edit', edit_movie_path(movie) %></td>
-    <td><%= link_to 'Destroy', movie, confirm: 'Are you sure?', method: :delete %></td>
-    <td><%= link_to 'Rate', :controller => "movies", :action => "rate", :id => movie %></td>
+		<td><%= link_to 'Show', movie %>
+				<%= link_to 'Edit', edit_movie_path(movie) %><br />
+				<%= link_to 'Destroy', movie, confirm: 'Are you sure?', method: :delete %>
+				<%= link_to 'Rate', :controller => "movies", :action => "rate", :id => movie %></td>
   </tr>
 <% end %>
 </table>
