@@ -100,7 +100,12 @@ a {
 	margin-bottom: 10px;
 }
 
+#first_button {
+	float: left;
+}
+
 #second_button {
+	float: left;
 	display: inline;
 }
 

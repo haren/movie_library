@@ -6,7 +6,7 @@ class Order < ActiveRecord::Base
 
 	validates :name, :presence => :true, :length => {:minimum => 6}
 	validates :address, :presence => :true, :length => {:minimum => 10}
-	validates :email, :presence => :true
+	validates :email, :presence => :true, :format => { :with => /[\w]+@[\w]+\.[\w]+/ }
 	validates :pay_type, :presence => :true, :inclusion => PAYMENT_TYPES
 
 	def add_items_from_cart(cart)

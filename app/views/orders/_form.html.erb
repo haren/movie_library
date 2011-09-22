@@ -27,10 +27,6 @@
     <%= f.label :pay_type %><br />
     <%= f.select :pay_type, Order::PAYMENT_TYPES, :prompt => 'Select a payment method' %>
   </div>
-	<div class="field">
-		<%= f.label :price %>
-		<%= f.text_field :price, :value => @cart.total_price, :disabled => true %>
-	</div>
   <div class="actions">
     <%= f.submit %>
   </div>
