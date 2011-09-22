@@ -1,21 +1,23 @@
-<h1>Listing episodes</h1>
+<h2>Listing episodes</h2>
 
 <table>
   <tr>
     <th>Title</th>
     <th>Number</th>
-    <th></th>
+		<th>Price</th>
     <th></th>
     <th></th>
   </tr>
 
 <% @episodes.sort_by(&:number).each do |episode| %>
-  <tr>
+  <tr align ="center">
     <td><%= episode.title %></td>
     <td><%= episode.number %></td>
-    <td><%= link_to 'Show', [@series, episode] %></td>
-    <td><%= link_to 'Edit', [:edit, @series, episode] %></td>
-    <td><%= link_to 'Destroy', [@series, episode], confirm: 'Are you sure?', method: :delete %></td>
+		<td><em><%= number_to_currency(episode.price) %></em></td>
+    <td class="to_be_spaced"><%= link_to 'Show', [@series, episode] %>
+		  <%= link_to 'Edit', [:edit, @series, episode] %><br />
+		  <%= link_to 'Destroy', [@series, episode], confirm: 'Are you sure?', method: :delete %></td>
+		<td class="to_be_spaced"><%= button_to 'Order now', episode_items_path(:episode_id => episode) %></td>
   </tr>
 <% end %>
 </table>

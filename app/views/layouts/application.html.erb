@@ -7,20 +7,20 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="everything">
-	<div id="columns">
-		<div id="top">
-			The Ultimate Movie Library
-		</div>
-		<div id="menu">
-			<%= link_to_unless_current 'Movies', movies_path %>
-			<%= link_to_unless_current 'Series', series_index_path %>
-			<%= link_to_unless_current 'Actors', actors_path %>
-			<%= link_to_unless_current 'Home', root_path %><br />
-		</div>
+	<div id="top">
+		The Ultimate Movie Library
 	</div>
-		<div id="main">
-			<%= yield %>
-		</div>
+	<div id="cart">
+		<%= render @cart unless (@cart.movie_items.count == 0 and @cart.episode_items.count == 0)%>
+	</div>
+	<div id="menu">
+		<%= link_to_unless_current 'Movies', movies_path %>
+		<%= link_to_unless_current 'Series', series_index_path %>
+		<%= link_to_unless_current 'Actors', actors_path %>
+		<%= link_to_unless_current 'Home', root_path %><br />
+	</div>
+	<div id="main">
+		<%= yield %>
 	</div>
 
 </body>

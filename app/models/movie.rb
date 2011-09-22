@@ -8,8 +8,10 @@ class Movie < ActiveRecord::Base
 
 	has_many :role_in_a_movies
 	has_many :actors, :through => :role_in_a_movies
+	has_many :movie_items
 
 	after_update :calculate_votes, :if => :rating_changed?
+	before_destroy :ensure_no_movie_items
 
 
   def rating=(value)
@@ -22,5 +24,16 @@ class Movie < ActiveRecord::Base
 
 	def display_rating
 		tmp_rate = sprintf("%3.2f", self.rating)
+	end
+
+	private
+
+	def ensure_no_movie_items
+		if movie_items.empty?
+			return true
+		else
+			errors.add(:base, 'Movie items exist')
+			return false
+		end
 	end
 end

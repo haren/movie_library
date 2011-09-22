@@ -80,4 +80,14 @@ class SeriesController < ApplicationController
       format.json { head :ok }
     end
   end
+
+	def order_all_episodes
+		@series = Series.find(params[:id])
+		@series.add_all_episodes_to_cart
+
+		respond_to do |format|
+      format.html { redirect_to series_index_url }
+      format.json { head :ok }
+    end
+	end
 end

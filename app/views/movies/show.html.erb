@@ -13,6 +13,11 @@
 			</p>
 
 			<p>
+				<b>Price:</b>
+				<em><%= number_to_currency(@movie.price) %></em>
+			</p>
+
+			<p>
 				<b>Actors:</b>
 			</p>
 
@@ -33,6 +38,9 @@
 				</tr>
 			<% end %>
 			</table>
+			<p>
+				<%= button_to 'Order now', movie_items_path(:movie_id => @movie) %>
+			</p>
 		</td>
 		<td>
 			<%= image_tag @movie.pic.url %>

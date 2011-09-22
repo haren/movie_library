@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Episode:</b>
+  <%= @episode_item.episode_id %>
+</p>
+
+<p>
+  <b>Cart:</b>
+  <%= @episode_item.cart_id %>
+</p>
+
+<p>
+  <b>Quantity:</b>
+  <%= @episode_item.quantity %>
+</p>
+
+
+<%= link_to 'Edit', edit_episode_item_path(@episode_item) %> |
+<%= link_to 'Back', episode_items_path %>

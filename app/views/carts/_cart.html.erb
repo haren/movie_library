@@ -1,0 +1,55 @@
+<h2>Your cart</h2>
+
+<table id="cart_rendered">
+	<tr id="to_be_centered">
+		<th colspan=2>Movie</th>
+		<th id="to_be_spaced">Amount</th>
+		<th id="to_be_spaced">Item Price</th>		
+		<th id="to_be_spaced">Total Price</th>
+		<th></th>
+	</tr>
+<% @cart.movie_items.each do |item| %>
+	<tr id="to_be_centered">
+		<td colspan=2><%= item.movie.title %></td>
+		<td id="to_be_spaced"><%= item.quantity %></td>
+		<td id="to_be_spaced"><%= number_to_currency(item.movie.price) %></td>
+		<td id="to_be_spaced"><%= number_to_currency(item.total_price) %></td>		
+		<td><%= button_to 'Remove item', item, :method => :delete %></td> 
+	</tr>
+<% end %>
+	<tr id="to_be_centered">
+		<th>Episode</th>
+		<th id="to_be_spaced">Series</th>
+		<th id="to_be_spaced">Amount</th>
+		<th id="to_be_spaced">Item Price</th>
+		<th id="to_be_spaced">Total Price</th>
+		<th></th>
+	</tr>
+<% @cart.episode_items.all.sort_by{|e| e.episode.series.title}.each do |item| %>
+	<tr id="to_be_centered">
+		<td><%= item.episode.title %></td>
+		<td id="to_be_spaced"><%= item.episode.series.title_shortened %></td>
+		<td id="to_be_spaced"><%= item.quantity %></td>
+		<td id="to_be_spaced"><%= number_to_currency(item.episode.price) %></td>
+		<td id="to_be_spaced"><%= number_to_currency(item.total_price) %></td>		
+		<td><%= button_to 'Remove item', item, :method => :delete %></td>
+	</tr>
+<% end %>
+	<tr id ="total_line">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><b>Total:</b></td>
+		<td><b><%= number_to_currency(@cart.total_price) %></b></td>
+	</tr>
+	<tr id ="total_line">
+		<td></td>
+		<td></td>
+		<td></td>
+		<td><b>(Discount:</b></td>
+		<td><b><%= number_to_currency(@cart.discount) %>)</b></td>		
+	</tr>
+</table>
+<%= button_to 'Empty cart', @cart, :method => :delete,
+:confirm => 'Are you sure?' %>
+

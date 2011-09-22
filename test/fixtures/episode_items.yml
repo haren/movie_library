@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  episode_id: 1
+  cart_id: 1
+  quantity: 1
+
+two:
+  episode_id: 1
+  cart_id: 1
+  quantity: 1

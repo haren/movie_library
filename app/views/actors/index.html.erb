@@ -18,7 +18,7 @@
 		<td><% actor.movies.all.each do |movie| %>
 					<%= link_to movie.title, movie %><br />
 				<% end %></td>
-		<td><%= image_tag actor.pic.url(:thumb), :mouseover => actor.pic.url %> 
+		<td><%= image_tag actor.pic.url(:thumb)%> 
     <td><%= link_to 'Show', actor %></td>
     <td><%= link_to 'Edit', edit_actor_path(actor) %></td>
     <td><%= link_to 'Destroy', actor, confirm: 'Are you sure?', method: :delete %></td>

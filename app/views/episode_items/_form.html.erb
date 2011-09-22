@@ -1,0 +1,29 @@
+<%= form_for(@episode_item) do |f| %>
+  <% if @episode_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@episode_item.errors.count, "error") %> prohibited this episode_item from being saved:</h2>
+
+      <ul>
+      <% @episode_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :episode_id %><br />
+    <%= f.number_field :episode_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cart_id %><br />
+    <%= f.number_field :cart_id %>
+  </div>
+  <div class="field">
+    <%= f.label :quantity %><br />
+    <%= f.number_field :quantity %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

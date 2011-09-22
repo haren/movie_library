@@ -5,9 +5,11 @@
     <th>Title</th>
     <th>Rating</th>
     <th>No. of votes</th>
+		<th>Price</th>
 		<th>Actors</th>
 		<th>Poster</th>
     <th></th>
+		<th></th>
   </tr>
 
 <% @movies.sort_by(&:rating).reverse.each do |movie| %>
@@ -15,14 +17,16 @@
     <td><%= movie.title %></td>
     <td><%= movie.display_rating %></td>
     <td><%= movie.number_of_votes %></td>
+		<td><em><%= number_to_currency(movie.price) %></em></td>
 		<td><% movie.actors.all.each do |actor| %>
 				<%= link_to actor.name, actor %><br />
 				<% end %></td>
-		<td><%= image_tag movie.pic.url(:thumb), :alt => "No poster", :mouseover => movie.pic.url %></td>
+		<td><%= image_tag movie.pic.url(:thumb), :alt => "No poster" %></td>
 		<td><%= link_to 'Show', movie %>
 				<%= link_to 'Edit', edit_movie_path(movie) %><br />
 				<%= link_to 'Destroy', movie, confirm: 'Are you sure?', method: :delete %>
 				<%= link_to 'Rate', :controller => "movies", :action => "rate", :id => movie %></td>
+		<td><%= button_to 'Order now', movie_items_path(:movie_id => movie) %></td>
   </tr>
 <% end %>
 </table>

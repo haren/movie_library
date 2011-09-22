@@ -10,6 +10,15 @@
   <%= @episode.number %>
 </p>
 
+<p>
+	<b>Price:</b>
+	<em><%= number_to_currency(@episode.price)%></em>
+</p>
+
+<p>
+	<%= button_to 'Order now', episode_items_path(:episode_id => @episode) %>
+</p>
+
 
 <%= link_to 'Edit', [:edit, @series, @episode] %>
 <%= link_to 'Back', [@series, :episodes] %>

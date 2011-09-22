@@ -1,4 +1,12 @@
 MovieLibrary::Application.routes.draw do
+  resources :episode_items do
+		post :order_all_episodes, :on => :member
+	end
+
+  resources :movie_items
+
+  resources :carts
+
   resources :role_in_an_episodes
 
   resources :role_in_a_movies
@@ -14,8 +22,6 @@ MovieLibrary::Application.routes.draw do
 	end
 
 	match "rates" => "movies#rate"
-
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

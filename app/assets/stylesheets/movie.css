@@ -8,6 +8,19 @@ table {
 	border-collapse: collapse;
 }
 
+#episodes {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+table #to_be_centered {
+	text-align: center;
+}
+
+#to_be_spaced {
+	border-left: solid 10px transparent;
+}
+
 .list_line_even {
   background:   #FFFFFF;
 }
@@ -38,7 +51,6 @@ a {
 	font-style: italic;
 	background-color: black;
 	color: white;
-	margin-left: 11em;
 }
 
 #menu {
@@ -47,11 +59,21 @@ a {
 	float: left;
 	background-color: #a0b4ef;
 	padding: 15px;
+	margin-left: 11em;
+	position: absolute;
+}
+
+#cart {
+	margin-top: 4.35em;
+	float: left;
+	max-width: 38.2em;
+	background-color: #ed5d5d;
+	font-size: 0.9em;
 }
 
 #main {
 	padding-top: 10px;
-	margin-left: 25em;
+	margin-left: 40em;
 	padding-left: 2em;
 	padding-bottom: 2em;
 	background-color: white;
@@ -61,6 +83,23 @@ a {
 #main h1 {
 	margin-left: 10em;
 }
+
+#main h2 {
+	margin-left: 5em;
+}
+
+#total_line {
+	font-weight: bold;
+	font-style: italic;
+	background-color: black;
+	color: #ed5d5d;
+	text-align: center;
+}
+
+#cart_rendered {
+	margin-bottom: 10px;
+}
+
 
 
 

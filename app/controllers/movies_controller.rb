@@ -3,6 +3,7 @@ class MoviesController < ApplicationController
   # GET /movies.json
   def index
     @movies = Movie.all
+		@cart = current_cart
 
     respond_to do |format|
       format.html # index.html.erb

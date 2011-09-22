@@ -4,9 +4,8 @@
   <tr>
     <th>Title</th>
     <th>No. of Episodes</th>
+		<th>Price*</th>
 		<th>Poster</th>
-    <th></th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -15,11 +14,13 @@
   <tr align="center" valign="middle">
     <td><%= series.title %></td>
     <td><%= series.number_of_episodes %></td>
-		<td><%= image_tag series.pic.url(:thumb), :alt => "No poster", :mouseover => series.pic.url %></td>
-    <td><%= link_to 'Show', series %></td>
-    <td><%= link_to 'Edit', edit_series_path(series) %></td>
-    <td><%= link_to 'Destroy', series, confirm: 'Are you sure?', method: :delete %></td>
-    <td><%= link_to 'Show episodes', [series, :episodes] %></td>
+		<td><em><%= number_to_currency(series.price) %></em></td>
+		<td><%= image_tag series.pic.url(:thumb), :alt => "No poster"%></td>
+    <td><%= link_to 'Show', series %>
+				<%= link_to 'Edit', edit_series_path(series) %>
+				<%= link_to 'Destroy', series, confirm: 'Are you sure?', method: :delete %><br />
+    		<%= link_to 'Show episodes', [series, :episodes] %></td>
+		<td><%= button_to 'Order all episodes', order_all_episodes_episode_item_path(series) %></td>
   </tr>
 <% end %>
 </table>
@@ -28,3 +29,5 @@
 
 <%= link_to 'New Series', new_series_path %>
 <%= link_to 'Home', root_path %>
+
+<h6>*Ordering a whole series, you get a 10% discount on its episodes.</h6>
