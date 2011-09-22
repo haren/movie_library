@@ -1,4 +1,6 @@
 MovieLibrary::Application.routes.draw do
+  resources :orders
+
   resources :episode_items do
 		post :order_all_episodes, :on => :member
 	end

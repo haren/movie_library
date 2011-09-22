@@ -1,6 +1,7 @@
 class Cart < ActiveRecord::Base
 	has_many :movie_items	
 	has_many :episode_items
+	belongs_to :order
 
 	def add_movie(movie_id, movie_price)
 		current_item = movie_items.find_by_movie_id(movie_id)

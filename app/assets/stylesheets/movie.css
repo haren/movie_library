@@ -13,7 +13,7 @@ table {
 	font-weight: normal;
 }
 
-table #to_be_centered {
+#to_be_centered {
 	text-align: center;
 }
 
@@ -98,6 +98,10 @@ a {
 
 #cart_rendered {
 	margin-bottom: 10px;
+}
+
+#second_button {
+	display: inline;
 }
 
 

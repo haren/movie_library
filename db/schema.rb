@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110922073811) do
+ActiveRecord::Schema.define(:version => 20110922134016) do
 
   create_table "actors", :force => true do |t|
     t.string   "name"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20110922073811) do
   create_table "carts", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "discount",   :precision => 8, :scale => 2, :default => 0.0
+    t.decimal  "discount",   :default => 0.0
   end
 
   create_table "episode_items", :force => true do |t|
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(:version => 20110922073811) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
   end
 
   create_table "episodes", :force => true do |t|
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20110922073811) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "order_id"
   end
 
   create_table "movies", :force => true do |t|
@@ -74,6 +76,16 @@ ActiveRecord::Schema.define(:version => 20110922073811) do
     t.datetime "pic_updated_at"
     t.float    "rating",           :default => 0.0
     t.decimal  "price",            :default => 0.0
+  end
+
+  create_table "orders", :force => true do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "email"
+    t.string   "pay_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.decimal  "price",      :precision => 8, :scale => 2
   end
 
   create_table "role_in_a_movies", :force => true do |t|

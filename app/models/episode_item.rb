@@ -1,6 +1,7 @@
 class EpisodeItem < ActiveRecord::Base
 	belongs_to :episode
 	belongs_to :cart
+	belongs_to :order
 
 	def total_price
 		self.episode.price * self.quantity

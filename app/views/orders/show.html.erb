@@ -1,0 +1,51 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @order.address %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @order.email %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @order.price %>
+</p>
+
+<p>
+  <b>Pay type:</b>
+  <%= @order.pay_type %>
+</p>
+
+<h3>Order includes:</h3>
+<table id="to_be_centered">
+	<tr>
+		<th colspan=2>Movie</th>
+	</tr>
+<% @order.movie_items.all.each do |item| %>
+	<tr>
+		<td colspan=2> <%=item.movie.title%></td>
+	</tr>
+<% end %>
+
+	<tr>
+		<th>Episode</th>
+		<th>Series</th>
+	</tr>
+<% @order.episode_items.all.each do |item| %>
+	<tr>
+		<td> <%=item.episode.title%></td>
+		<td> <%=item.episode.series.title%></td>
+	</tr>
+<% end %>
+</table><br />
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
