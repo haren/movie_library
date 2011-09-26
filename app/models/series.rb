@@ -5,6 +5,7 @@ class Series < ActiveRecord::Base
 	validates_attachment_size :pic, :less_than => 50.kilobytes, :message => "can't be larger than 50KB"
 
   has_many :episodes
+	has_many :comments, :as => :commentary
 
 	def calculate_price
 		price_tmp = episodes.all.sum(&:price) * 0.9 unless episodes.empty?

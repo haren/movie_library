@@ -1,4 +1,6 @@
 class EpisodeItemsController < ApplicationController
+	skip_before_filter :authorize, :only => [:create, :order_all_episodes]
+
   # GET /episode_items
   # GET /episode_items.json
   def index

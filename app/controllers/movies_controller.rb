@@ -1,4 +1,6 @@
 class MoviesController < ApplicationController
+	skip_before_filter :authorize, :only => [:show, :index]
+
   # GET /movies
   # GET /movies.json
   def index

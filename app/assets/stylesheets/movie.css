@@ -65,10 +65,13 @@ a {
 
 #cart {
 	margin-top: 4.35em;
+	margin-left: -9 em;
 	float: left;
 	max-width: 38.2em;
+	min-width: 38.2em;
 	background-color: #ed5d5d;
 	font-size: 0.9em;
+	position: absolute;
 }
 
 #main {
@@ -86,6 +89,10 @@ a {
 
 #main h2 {
 	margin-left: 5em;
+}
+
+#notice {
+	color: red;
 }
 
 #total_line {
@@ -109,6 +116,55 @@ a {
 	display: inline;
 }
 
+#log_in_box {
+	float: left;
+	background-color: yellow;
+	font-size: 1.25em;
+	width: 9em;
+	padding: 15px;
+	text-align: center;
+	height: 1.2em;
+}
 
+.user_form label {
+	width: 3em;
+	float: left;
+}
 
+.user_form textarea, .user_form input {
+	margin-left: 5em;
+}
 
+.user_form div {
+	margin: 0.5em 0;
+}
+
+/* Tooltip */
+
+.tooltip{
+    position:absolute;
+    z-index:999;
+    left:-9999px;
+    background-color: #a0b4ef;
+    padding:5px;
+    border:1px solid #fff;
+    width:100px;
+}
+.tooltip p{
+    margin:0;
+    padding:0;
+    color:#fff;
+    background-color:black;
+    padding:2px 7px;
+}
+
+#by {
+	text-align: left;
+	font-size: 0.75em;
+	padding-top: 2em;
+	width: 100px;
+}
+
+#comments {
+	border-bottom: solid 1px black;
+}

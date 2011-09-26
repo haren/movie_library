@@ -4,7 +4,7 @@ class Order < ActiveRecord::Base
 	has_many :movie_items
 	has_many :episode_items
 
-	validates :name, :presence => :true, :length => {:minimum => 6}
+	validates :name, :presence => :true, :length => {:minimum => 4}
 	validates :address, :presence => :true, :length => {:minimum => 10}
 	validates :email, :presence => :true, :format => { :with => /[\w]+@[\w]+\.[\w]+/ }
 	validates :pay_type, :presence => :true, :inclusion => PAYMENT_TYPES

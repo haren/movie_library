@@ -6,4 +6,10 @@ class Actor < ActiveRecord::Base
 	validates_attachment_size :pic, :less_than => 50.kilobytes, :message => "can't be larger than 50KB"
 
 	has_attached_file :attach
+
+	def update_movies(*movie_ids)
+		Movie.where(:id => movie_ids).each do |movie|
+			self.movies << movie
+		end
+	end
 end

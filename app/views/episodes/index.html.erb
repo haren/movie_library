@@ -14,10 +14,12 @@
     <td><%= episode.title %></td>
     <td><%= episode.number %></td>
 		<td><em><%= number_to_currency(episode.price) %></em></td>
-    <td class="to_be_spaced"><%= link_to 'Show', [@series, episode] %>
-		  <%= link_to 'Edit', [:edit, @series, episode] %><br />
-		  <%= link_to 'Destroy', [@series, episode], confirm: 'Are you sure?', method: :delete %></td>
-		<td class="to_be_spaced"><%= button_to 'Order now', episode_items_path(:episode_id => episode) %></td>
+    <td class="to_be_spaced">
+			<%= link_to 'Show', [@series, episode] %>
+		  <%= link_to 'Edit', [:edit, @series, episode] %>
+		  <%= link_to 'Destroy', [@series, episode], confirm: 'Are you sure?', method: :delete %><br />
+			<%= link_to "Comments (#{episode.comments.all.count})", series_episode_comments_path(@series, episode) %> </td>
+		<td class="to_be_spaced"><%= button_to 'Order now', episode_items_path(:episode_id => episode), :disabled => !logged_in? %></td>
   </tr>
 <% end %>
 </table>

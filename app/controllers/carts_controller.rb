@@ -1,4 +1,6 @@
 class CartsController < ApplicationController
+	skip_before_filter :authorize, :only => [:create, :update, :destroy]
+
   # GET /carts
   # GET /carts.json
   def index
@@ -38,6 +40,7 @@ class CartsController < ApplicationController
   # POST /carts.json
   def create
     @cart = Cart.new(params[:cart])
+		@cart.user = current_user
 
     respond_to do |format|
       if @cart.save
@@ -70,8 +73,11 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     @cart = current_cart
-    @cart.destroy
-		session[:cart_id] = nil
+    @cart.movie_items.destroy_all
+		@cart.episode_items.destroy_all
+		@cart.update_attribute :discount, 0
+
+		logger.error "discount: #{@cart.discount}"
 
     respond_to do |format|
 			format.html { redirect_to(root_path, :notice => 'Your cart is currently empty.') }

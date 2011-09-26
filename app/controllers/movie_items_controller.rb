@@ -1,4 +1,6 @@
 class MovieItemsController < ApplicationController
+	skip_before_filter :authorize, :only => :create
+
   # GET /movie_items
   # GET /movie_items.json
   def index
@@ -42,6 +44,7 @@ class MovieItemsController < ApplicationController
   # POST /movie_items.json
   def create
 		@cart = current_cart
+		logger.error "discount: #{@cart.discount}"
 	  movie = Movie.find(params[:movie_id])
 		@movie_item = @cart.add_movie(movie.id, movie.price)
 

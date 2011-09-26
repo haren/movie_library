@@ -9,6 +9,7 @@ class Movie < ActiveRecord::Base
 	has_many :role_in_a_movies
 	has_many :actors, :through => :role_in_a_movies
 	has_many :movie_items
+	has_many :comments, :as => :commentary
 
 	after_update :calculate_votes, :if => :rating_changed?
 	before_destroy :ensure_no_movie_items

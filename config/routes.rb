@@ -1,4 +1,14 @@
 MovieLibrary::Application.routes.draw do
+	get 'admin' => 'admin#index'
+
+	controller :session do
+		get 'login' => :new
+		post 'login' => :create
+		delete 'logout' => :destroy
+	end
+
+  resources :users
+
   resources :orders
 
   resources :episode_items do
@@ -17,14 +27,19 @@ MovieLibrary::Application.routes.draw do
 
   get "home/index"
 
-  resources :movies
+	resources :movies do 
+		resources :comments			# /movies/:movie_id/comments/:id => CommentsController
+	end
 
   resources :series do
-  	resources :episodes
+		resources :comments
+  	resources :episodes do 
+			resources :comments
+		end
 	end
 
 	match "rates" => "movies#rate"
-
+	
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,15 @@
+<% unless context.comments.empty? %>
+	<table>
+		<tr>
+			<th>Comment</th>
+			<th></th>
+		</tr>	
+		<% context.comments.all.each do |comment| %>
+		<tr>
+			<td><%=comment.content %></td>
+			<td align="right"><br/>by <%=comment.by %></td>
+		</tr>
+		<% end %>
+	</table>
+<% end %>
+<%= "No comments yet." if context.comments.empty? %>

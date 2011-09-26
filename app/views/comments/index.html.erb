@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<h3><%= "Displaying comments for #{context.class.to_s.underscore}: #{context.title}" %></h3>
+
+<% unless context.comments.empty? %>
+	<table>
+		<tr>
+			<th>Comment</th>
+			<th></th>
+			<th></th>
+		</tr>	
+		<% context.comments.all.each do |comment| %>
+		<tr id="comments">
+			<td><%=comment.content %></td>
+			<td id="by">by <%=comment.by %></td>
+			<td> <% if context.class.name != "Episode" && authorized?(comment) %>
+						<%= link_to 'Delete', [context, comment], :method => 'delete' %>
+					 <% elsif context.class.name == "Episode" && authorized?(comment) %>			
+					<%= link_to 'Delete', [context.series, context, comment], :method => 'delete' %>
+					 <% end %>
+			</td>
+		</tr> 
+		<% end %>
+	</table>
+<% end %>
+<%= "No comments yet." if context.comments.empty? %>
+
+<br /><br />
+
+
+<% unless context.class.name == "Episode" %> 
+<%= link_to 'Post comment', [:new, context, :comment] %>
+<% else %>
+	<%= link_to 'Post comment', [:new, context.series, context, :comment] %>
+<% end %> 

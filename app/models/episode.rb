@@ -13,6 +13,7 @@ class Episode < ActiveRecord::Base
   belongs_to :series
 	has_and_belongs_to_many :actors
 	has_many :episode_items
+	has_many :comments, :as => :commentary
 
 	protected
 	

@@ -38,9 +38,9 @@
 				</tr>
 			<% end %>
 			</table>
-			<p>
-				<%= button_to 'Order now', movie_items_path(:movie_id => @movie) %>
-			</p>
+			<p><a class ="test">
+				<%= button_to 'Order now', movie_items_path(:movie_id => @movie), :disabled => !logged_in? %>
+			</a></p>
 		</td>
 		<td>
 			<%= image_tag @movie.pic.url %>

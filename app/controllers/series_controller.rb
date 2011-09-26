@@ -1,5 +1,7 @@
 class SeriesController < ApplicationController
-  # GET /series
+	skip_before_filter :authorize, :only => [:index, :show]
+ 
+ # GET /series
   # GET /series.json
   def index
     @series = Series.all
@@ -81,13 +83,4 @@ class SeriesController < ApplicationController
     end
   end
 
-	def order_all_episodes
-		@series = Series.find(params[:id])
-		@series.add_all_episodes_to_cart
-
-		respond_to do |format|
-      format.html { redirect_to series_index_url }
-      format.json { head :ok }
-    end
-	end
 end

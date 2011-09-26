@@ -19,8 +19,9 @@
     <td><%= link_to 'Show', series %>
 				<%= link_to 'Edit', edit_series_path(series) %>
 				<%= link_to 'Destroy', series, confirm: 'Are you sure?', method: :delete %><br />
-    		<%= link_to 'Show episodes', [series, :episodes] %></td>
-		<td><%= button_to 'Order all episodes', order_all_episodes_episode_item_path(series) %></td>
+    		<%= link_to 'Show episodes', [series, :episodes] %><br />
+				<%= link_to "Comments (#{series.comments.all.count})", series_comments_path(series) %> </td></td>
+		<td><%= button_to 'Order all episodes', order_all_episodes_episode_item_path(series), :disabled => !logged_in? %></td>
   </tr>
 <% end %>
 </table>

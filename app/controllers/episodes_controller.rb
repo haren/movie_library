@@ -1,5 +1,7 @@
 class EpisodesController < ApplicationController
-  respond_to :html, :json
+	skip_before_filter :authorize, :only => [:index, :show]
+ 
+ respond_to :html, :json
 
   # GET /episodes
   # GET /episodes.json

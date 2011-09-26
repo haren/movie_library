@@ -16,7 +16,7 @@
 </p>
 
 <p>
-	<%= button_to 'Order now', episode_items_path(:episode_id => @episode) %>
+	<%= button_to 'Order now', episode_items_path(:episode_id => @episode), :disabled => !logged_in? %>
 </p>
 
 

@@ -10,15 +10,24 @@
 	<div id="top">
 		The Ultimate Movie Library
 	</div>
+	<div id="log_in_box">
+		<% if logged_in?%>
+			<%= link_to 'My Profile', user_path(current_user) %>
+			<%= link_to 'Log out', logout_path, :method => :delete %>
+		<% else %> 
+			<%= link_to 'Log in', login_path %>
+			<%= link_to 'Register', new_user_path %>
+		<% end %>
+	</div>
 	<div id="cart">
-		<%= render @cart unless (@cart.movie_items.count == 0 and @cart.episode_items.count == 0)%>
+		<%= render @cart if @cart && !(@cart.movie_items.count == 0 and @cart.episode_items.count == 0)%>
 	</div>
-	<div id="menu">
-		<%= link_to_unless_current 'Movies', movies_path %>
-		<%= link_to_unless_current 'Series', series_index_path %>
-		<%= link_to_unless_current 'Actors', actors_path %>
-		<%= link_to_unless_current 'Home', root_path %><br />
-	</div>
+		<div id="menu">
+			<%= link_to_unless_current 'Movies', movies_path %>
+			<%= link_to_unless_current 'Series', series_index_path %>
+			<%= link_to_unless_current 'Actors', actors_path %>
+			<%= link_to_unless_current 'Home', root_path %><br />
+		</div>
 	<div id="main">
 		<%= yield %>
 	</div>

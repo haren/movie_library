@@ -1,4 +1,6 @@
 class ActorsController < ApplicationController
+	skip_before_filter :authorize, :only => [:index, :show]
+
   # GET /actors
   # GET /actors.json
   def index
@@ -57,6 +59,8 @@ class ActorsController < ApplicationController
   # PUT /actors/1.json
   def update
     @actor = Actor.find(params[:id])
+		@actor.movies.destroy_all
+		@actor.update_movies(params[:actor][:movie_ids]) if params[:actor]
 
     respond_to do |format|
       if @actor.update_attributes(params[:actor])

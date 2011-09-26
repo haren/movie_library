@@ -1,0 +1,11 @@
+<h1>New comment</h1>
+
+<% unless context.class.name == "Episode" %>
+	<%= render 'form' %>
+	<%= link_to 'Back', [context, :comments] %>
+<% else %>
+	<%= render 'form2' %>
+	<%= link_to 'Back', [context.series, context, :comments] %>
+<% end %>
+
+

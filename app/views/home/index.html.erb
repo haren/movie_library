@@ -1,1 +1,10 @@
 <p id="notice"><%= notice %></p>
+<% if current_user && current_user.name == "admin" %>
+	<div = "admin_panel">
+		<h3>Admin panel</h3>
+		<h5>Here you can check current users and orders.</h5>
+		<h5>As an admin you may also update/destroy/add movies/series/episodes/actors.</h5>
+		<%= link_to 'Orders', orders_path %>
+		<%= link_to 'Users', users_path %>
+	</div>
+<% end %>

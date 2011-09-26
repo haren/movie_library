@@ -1,4 +1,7 @@
 class OrdersController < ApplicationController
+	skip_before_filter :authorize, :only => [:new, :create]
+	before_filter :check_if_admin, :only => [:index, :show]
+
   # GET /orders
   # GET /orders.json
   def index
@@ -44,13 +47,12 @@ class OrdersController < ApplicationController
 		@cart = current_cart
 
 		@order.add_items_from_cart(@cart)
+		@cart.discount = 0
+		@cart.save
 
     respond_to do |format|
       if @order.save
-				Cart.destroy(session[:cart_id])
-				session[:cart_id] = nil
-
-        format.html { redirect_to @order, notice: 'Order was successfully created.' }
+			  format.html { redirect_to root_path, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: "new" }
@@ -66,7 +68,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+        format.html { redirect_to root_path, notice: 'Order was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
