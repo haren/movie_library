@@ -9,7 +9,7 @@
 			<th></th>
 		</tr>	
 		<% context.comments.all.each do |comment| %>
-		<tr id="comments">
+		<tr id="lined">
 			<td><%=comment.content %></td>
 			<td id="by">by <%=comment.by %></td>
 			<td> <% if context.class.name != "Episode" && authorized?(comment) %>

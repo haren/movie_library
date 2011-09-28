@@ -1,19 +1,20 @@
 require 'test_helper'
 
 class CartsControllerTest < ActionController::TestCase
+	fixtures :carts
+
   setup do
     @cart = carts(:one)
   end
 
-  test "should get index" do
+  test "should not get index" do
     get :index
-    assert_response :success
-    assert_not_nil assigns(:carts)
-  end
+    assert_response :redirect
+	end
 
-  test "should get new" do
+  test "should not get new" do
     get :new
-    assert_response :success
+    assert_response :redirect
   end
 
   test "should create cart" do
@@ -24,14 +25,28 @@ class CartsControllerTest < ActionController::TestCase
     assert_redirected_to cart_path(assigns(:cart))
   end
 
-  test "should show cart" do
+  test "should not view cart show page even if logged in" do
+		@user = User.create(:name => "Jacek", :password => "jolalojalna", :email => "Jacek@lukasz.marek")
+		session[:user_id] = @user.id
+
     get :show, id: @cart.to_param
-    assert_response :success
+    assert_response :redirect
+		assert_redirected_to root_path
   end
 
-  test "should get edit" do
+  test "should not get edit" do
     get :edit, id: @cart.to_param
-    assert_response :success
+    assert_response :redirect
+		assert_redirected_to login_path
+  end
+
+  test "should not get edit even if logged in" do
+		@user = User.create(:name => "Jacek", :password => "jolalojalna", :email => "Jacek@lukasz.marek")
+		session[:user_id] = @user.id
+
+    get :edit, id: @cart.to_param
+    assert_response :redirect
+		assert_redirected_to root_path
   end
 
   test "should update cart" do
@@ -40,10 +55,8 @@ class CartsControllerTest < ActionController::TestCase
   end
 
   test "should destroy cart" do
-    assert_difference('Cart.count', -1) do
+    assert_raise(NoMethodError) do
       delete :destroy, id: @cart.to_param
     end
-
-    assert_redirected_to carts_path
   end
 end

@@ -9,5 +9,64 @@
 	<b>Email:</b>
 	<%= @user.email %>
 </p>
-
 <%= link_to 'Edit', edit_user_path(@user) %> 
+<br />
+
+
+<h4>Your Orders: </h4>
+<table id="in_profile">
+	<tr>
+		<th></th>
+		<th>Price</th>
+	</tr>
+<% Order.where(:name => @user.name).all.each do |order| %>
+	<tr id="lined_up">
+		<td id="wider" align="center">
+			<table id="to_be_centered">
+				<tr>
+					<th>Movies</th>
+				</tr>
+				<% MovieItem.where(:order_id => order.id).all.each do |item| %>
+					<tr>
+						<td>
+							<%= item.movie.title %>,
+							<%= item.quantity%> x <%=number_to_currency(item.movie.price) %>
+							</td>
+					</tr>
+				<% end %>
+				<tr>
+					<th>Episodes</th>
+				</tr>
+				<% EpisodeItem.where(:order_id => order.id).all.each do |item| %>
+					<tr>
+						<td>
+		         <%= item.episode.title %>, 
+		         <%= item.episode.series.title_shortened %>, 
+		         <%= item.quantity %> x <%=number_to_currency(item.episode.price) %></td>
+					</tr>
+				<% end %>
+			</table>
+		</td>
+		<td><%= number_to_currency(order.price) %></td>
+	</tr>
+<% end %>
+</table>
+<br />
+
+<h4>Your comments: </h4>
+<table id="in_profile">
+	<tr>
+		<th>Comment</th>
+		<th>About</th>
+	</tr>
+<% Comment.where(:by => @user.name).all.each do |comment| %>
+	<tr id="lined_up">
+		<td><%= comment.content %></td>
+		<% unless comment.commentary_type == "Episode" %>
+			<td> <%= link_to comment.commentary.title, comment.commentary %> </td>
+		<% else %>
+			<td> <%= link_to comment.commentary.title, [comment.commentary.series, comment.commentary] %> </td>
+		<% end %>
+	</tr>
+<% end %>
+</table>

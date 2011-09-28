@@ -13,8 +13,8 @@ table {
 	font-weight: normal;
 }
 
-#to_be_centered {
-	text-align: center;
+#to_be_centered td{
+	table-align: center;
 }
 
 #to_be_spaced {
@@ -165,6 +165,19 @@ a {
 	width: 100px;
 }
 
-#comments {
+#wider {
+	width: 350px;
+}
+
+#lined {
 	border-bottom: solid 1px black;
+}
+
+#lined_up {
+	border-top: solid 1px black;
+	text-align: center;
+}
+
+#in_profile {
+	width: 500px;	
 }

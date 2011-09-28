@@ -34,6 +34,7 @@ class CartsController < ApplicationController
   # GET /carts/1/edit
   def edit
     @cart = Cart.find(params[:id])
+		redirect_to root_path
   end
 
   # POST /carts
@@ -73,11 +74,9 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     @cart = current_cart
-    @cart.movie_items.destroy_all
-		@cart.episode_items.destroy_all
+#    @cart.movie_items.destroy_all
+#		@cart.episode_items.destroy_all
 		@cart.update_attribute :discount, 0
-
-		logger.error "discount: #{@cart.discount}"
 
     respond_to do |format|
 			format.html { redirect_to(root_path, :notice => 'Your cart is currently empty.') }

@@ -16,7 +16,7 @@ class Movie < ActiveRecord::Base
 
 
   def rating=(value)
-    write_attribute(:rating, ( (self.number_of_votes * self.rating ) + value.to_i ) / (self.number_of_votes + 1))
+    write_attribute(:rating, ( self.number_of_votes * self.rating  + value.to_f ) / (self.number_of_votes + 1))
   end
 
 	def calculate_votes

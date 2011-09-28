@@ -2,6 +2,9 @@ class SessionController < ApplicationController
 	skip_before_filter :authorize
 
   def new
+		if logged_in?
+			redirect_to root_path, :notice => "Already logged in."
+		end
   end
 
   def create

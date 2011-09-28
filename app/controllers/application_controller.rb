@@ -40,14 +40,16 @@ class ApplicationController < ActionController::Base
 		  movie_comments_path(context.id, *args)
 		elsif Series === context
 		  series_comments_path(context.id, *args)
-		else
+		elsif Episode === context
 			series_episode_comments_path(context.series.id, context.id, *args)
+		else
+			nil
 		end
 	end
 
 	def authorized?(comment)
-		return true if current_user && comment.by == current_user.name 
-		return true if current_user && current_user.name == "admin"
+		return true if logged_in? && comment.by == current_user.name 
+		return true if logged_in? && current_user.name == "admin"
 		return false
 	end
 	

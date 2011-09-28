@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class ActorTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "sample test cause nothing to validate" do
+  	actor = Actor.create
+		assert actor.valid?
+  end
 end
