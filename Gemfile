@@ -9,6 +9,7 @@ group :development, :test do
 	gem 'sqlite3'
 	gem 'factory_girl_rails', "~> 1.2"
 	gem 'capybara'
+	gem 'launchy'
 end
 
 gem 'execjs'

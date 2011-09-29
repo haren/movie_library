@@ -161,6 +161,7 @@ DEPENDENCIES
   factory_girl_rails (~> 1.2)
   heroku
   jquery-rails
+  launchy
   paperclip
   pg
   rails (= 3.1.0)
