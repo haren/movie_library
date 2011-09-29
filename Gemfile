@@ -10,6 +10,7 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'paperclip' 
 gem 'factory_girl_rails', "~> 1.2"
+gem 'heroku'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -28,7 +29,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-gem 'ruby-debug19', :require => 'ruby-debug'
+#gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test do
   # Pretty printed test output
