@@ -4,10 +4,7 @@ class RoleInAMoviesController < ApplicationController
   def index
     @role_in_a_movies = RoleInAMovie.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @role_in_a_movies }
-    end
+    redirect_to root_path, :notice => "You are not supposed to view this page."
   end
 
   # GET /role_in_a_movies/1
@@ -15,26 +12,22 @@ class RoleInAMoviesController < ApplicationController
   def show
     @role_in_a_movie = RoleInAMovie.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @role_in_a_movie }
-    end
-  end
+		redirect_to root_path, :notice => "You are not supposed to view this page."  
+end
 
   # GET /role_in_a_movies/new
   # GET /role_in_a_movies/new.json
   def new
     @role_in_a_movie = RoleInAMovie.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @role_in_a_movie }
-    end
+    redirect_to root_path, :notice => "You are not supposed to view this page."
   end
 
   # GET /role_in_a_movies/1/edit
   def edit
     @role_in_a_movie = RoleInAMovie.find(params[:id])
+
+		redirect_to root_path, :notice => "You are not supposed to view this page."
   end
 
   # POST /role_in_a_movies
