@@ -74,8 +74,8 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     @cart = current_cart
-#    @cart.movie_items.destroy_all
-#		@cart.episode_items.destroy_all
+    @cart.movie_items.destroy_all
+		@cart.episode_items.destroy_all
 		@cart.update_attribute :discount, 0
 
     respond_to do |format|

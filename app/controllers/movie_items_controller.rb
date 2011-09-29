@@ -1,5 +1,5 @@
 class MovieItemsController < ApplicationController
-	skip_before_filter :authorize, :only => :create
+
 
   # GET /movie_items
   # GET /movie_items.json

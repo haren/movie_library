@@ -11,11 +11,11 @@ class User < ActiveRecord::Base
 	attr_reader	:password
 
 	validate :password_must_be_present
+	before_create :build_cart
 
 	def User.encrypt_password(password, salt)
 		Digest::SHA2.hexdigest(password + "wibble" + salt)
 	end
-
 
 	def password=(password)
 		@password = password

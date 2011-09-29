@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
-	skip_before_filter :authorize, :only => [:new, :create]
-	before_filter :check_if_admin, :only => [:index, :show]
+	before_filter :check_if_admin, :only => [:index, :show, :edit, :update, :destroy]
 
   # GET /orders
   # GET /orders.json

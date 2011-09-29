@@ -11,7 +11,6 @@ class Episode < ActiveRecord::Base
 	delegate :calculate_price, :prefix => true, :to => :series
 
   belongs_to :series
-	has_and_belongs_to_many :actors
 	has_many :episode_items
 	has_many :comments, :as => :commentary
 
@@ -28,7 +27,9 @@ class Episode < ActiveRecord::Base
 	private
 	
 	def ensure_no_episode_items
-		if movie_items.empty?
+		if !episode_items
+			return true
+		elsif episode_items.empty?
 			return true
 		else
 			errors.add(:base, 'Movie items exist')

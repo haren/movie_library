@@ -1,6 +1,4 @@
 class EpisodeItemsController < ApplicationController
-	skip_before_filter :authorize, :only => [:create, :order_all_episodes]
-
   # GET /episode_items
   # GET /episode_items.json
   def index
@@ -36,13 +34,17 @@ class EpisodeItemsController < ApplicationController
   # POST /episode_items
   # POST /episode_items.json
   def create
+
     @cart = current_cart
 	  episode = Episode.find(params[:episode_id])
 		@episode_item = @cart.add_episode(episode.id, episode.price)
-		@cart.update_discount(@episode_item.episode.series.episodes.all.sum(&:price) * 0.1) if @episode_item && @cart.discount_update_needed?("c", 																@episode_item.episode.series)
+
+		if @episode_item && @cart.discount_update_needed?("c", @episode_item.episode.series)
+			@cart.update_discount(@episode_item.episode.series.episodes.all.sum(&:price) * 0.1) 
+		end								
 
     respond_to do |format|
-      if @episode_item
+      if @episode_item.save
         format.html { redirect_to [episode.series, :episodes] }
         format.json { render json: @episode_item, status: :created, location: @episode_item }
       else
