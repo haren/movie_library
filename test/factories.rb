@@ -35,10 +35,19 @@ FactoryGirl.define do
 		cart
 	end
 
+	factory :actor do
+		name 'Robert Redford'
+	end
+
 	factory :order do
 		name 'John'
 		email 'John@john.doe'
 		pay_type 'Bank transfer'
 		address 'Long Street 56-789 London'
 	end	
+
+	factory :role_in_a_movie do
+		movie
+		actor
+	end
 end

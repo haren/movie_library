@@ -8,6 +8,7 @@ gem 'rails', '3.1.0'
 group :development, :test do	
 	gem 'sqlite3'
 	gem 'factory_girl_rails', "~> 1.2"
+	gem 'capybara'
 end
 
 gem 'execjs'
